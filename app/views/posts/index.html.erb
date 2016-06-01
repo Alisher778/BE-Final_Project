@@ -1,0 +1,18 @@
+<% @posts.each do |post| %>
+<div class="row">
+  <div class="well wel-lg">
+    <h4 align="center" id="title"><%= link_to post.title, post_path(post) %></h4>
+    <p><%= post.text %></p>
+    <div class="article-actions" id="buttons">
+    <p><%= post.created_at %></p>
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary" %>
+      <%=  link_to "Delete", post_path(post), method: :delete, data: {confirm: "Are you sure you want to delete it?"}, class: "btn btn-xs btn-danger" %>
+  </div>
+  </div>
+</div>
+<% end %>
+
+
+<%= link_to 'New Post', new_post_path, class: "btn btn-lg btn-success" %><br>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+

@@ -1,0 +1,15 @@
+<h1>Listing News Pages</h1>
+<div class="row">
+  <% @news_pages.each do |news_page| %>
+  <div class="col col-md-4">
+    <h3><%= news_page.title %></h3>
+    <p><%=  %></p>
+    <td><%= link_to 'Show', news_page %></td>
+        <td><%= link_to 'Edit', edit_news_page_path(news_page) %></td>
+        <td><%= link_to 'Destroy', news_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </div>
+  <% end %>
+</div>
+<br>
+
+<%= link_to 'New News page', new_news_page_path %>

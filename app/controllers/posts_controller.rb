@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
@@ -16,7 +16,9 @@ class PostsController < ApplicationController
   end
 
   def create
+    
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     if @post.save
       flash[:notice] = "Your post was successfully saved"
@@ -54,6 +56,6 @@ class PostsController < ApplicationController
 
    
     def post_params
-      params.require(:post).permit(:title, :text)
+      params.require(:post).permit(:title, :text, :user_id)
     end
 end

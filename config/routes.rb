@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :news_pages
+  get 'pages/new'
+
+  get 'pages/articles'
+
+  get 'pages/videos'
+
+  get 'pages/new'
+
+  devise_for :users
+  resources :topics
+  resources :users
   resources :posts
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.

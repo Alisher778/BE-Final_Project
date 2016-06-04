@@ -1,0 +1,33 @@
+<h2 align="center">My Account</h2>
+  <div align="center">
+    <%= image_tag @user.photo.url(:thumb), class: 'img-circle', style: 'background-color: green;'%>
+  </div>
+  
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @user.age %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @user.gender %>
+</p>
+<p>Number of my posts: <%= link_to @user.posts.count  %></p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

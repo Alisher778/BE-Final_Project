@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col col-md-12">
     <h2 align="center"><%= @news_page.title %></h2>
+    <%= image_tag @news_page.image.url(:large), class: "thumb" %>
     <pre align="justify"><%= @news_page.content %></pre>
   </div>
 </div>

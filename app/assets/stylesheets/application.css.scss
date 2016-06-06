@@ -1,3 +1,10 @@
+footer{
+  margine-top: 45px;
+  padding-top: 5px;
+  border-top: 5 px solid black;
+  color: #777;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -28,5 +35,17 @@ navbar-right{
 
 #title_h4{
   margin-top: -5px;
+}
+
+footer nav{
+  margin-top: 40px;
+  padding: 10px;
+  border-top: 2px soild balck;
+}
+footer li {
+  display: inline;
+  text-decoration: none;
+  margin: 2px 16px;
+  padding: 1px;
 }
 

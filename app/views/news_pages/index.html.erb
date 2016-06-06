@@ -1,8 +1,10 @@
-<h1>Listing News Pages</h1>
 <div class="row">
   <% @news_pages.each do |news_page| %>
   <div class="col col-md-4">
+   <a href="<% link_to news_page %>"><%= image_tag news_page.try(:image).url(:medium), class: "img-thumbnail" %>
     <h3><%= news_page.title %></h3>
+    </a>
+
     <p><%=  %></p>
     <td><%= link_to 'Show', news_page %></td>
         <td><%= link_to 'Edit', edit_news_page_path(news_page) %></td>

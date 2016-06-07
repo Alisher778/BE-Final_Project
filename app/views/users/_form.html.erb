@@ -31,6 +31,10 @@
     <%= f.label :photo %><br>
     <%= f.file_field :photo %>
   </div>
+  <div class="field">
+    <%= f.radio_button :gender, 'Male' %><br />
+    <%= f.radio_button :gender, 'Femael' %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -33,6 +33,11 @@
     <%= f.label :age %><br />
     <%= f.text_field :age, autofocus: true %>
   </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <small>Male </small><%= f.radio_button :gender, 'Male' %>
+    <small>Female </small><%= f.radio_button :gender, 'Female' %>
+  </div>
   
   <div class="field">
     <%= f.file_field :photo %>

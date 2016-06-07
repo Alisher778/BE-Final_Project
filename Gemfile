@@ -15,6 +15,8 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'devise'
 gem 'paperclip'
 gem 'rails_12factor', group: :production
+gem 'aws-sdk', '~> 2.3'
+gem 'tinymce-rails'
 
 group :development, :test do
   gem 'byebug'

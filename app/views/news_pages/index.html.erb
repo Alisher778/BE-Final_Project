@@ -15,3 +15,4 @@
 <br>
 
 <%= link_to 'New News page', new_news_page_path %>
+<%= will_paginate @news_pages, renderer: BootstrapPagination::Rails %>

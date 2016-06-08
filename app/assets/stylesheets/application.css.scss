@@ -4,7 +4,6 @@ footer{
   border-top: 5 px solid black;
   color: #777;
 }
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -49,4 +48,8 @@ footer li {
   margin: 2px 16px;
   padding: 1px;
 }
+.listing{
+  list-style: none;
+}
+
 

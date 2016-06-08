@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :news_pages
-  get 'pages/new'
 
   get 'pages/articles'
 
   get 'pages/videos'
 
   get 'pages/new'
+  
 
   devise_for :users
   resources :topics

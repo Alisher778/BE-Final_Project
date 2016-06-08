@@ -17,6 +17,9 @@ gem 'paperclip'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk', '~> 2.3'
 gem 'tinymce-rails'
+gem 'rails_admin'
+
+
 
 group :development, :test do
   gem 'byebug'

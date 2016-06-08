@@ -1,3 +1,17 @@
-<h1>Listing Users</h1>
-<% if current_user %>
-<%= current_user.posts %>
+<h1 align="center">All GO-IELTS site Users</h1>
+<div align="center">
+  <ul class="listing">
+    <% @users = User.all %>
+    <% @users.each do |user| %>
+    <div class="row">
+      <div class="well col-md-6 col-md-offset-3">
+        <li><%= link_to image_tag(user.photo.url(:small)), user_path(user), class: 'img-circle'%></li>
+        <li><strong><%= link_to user.email, user_path(user), style: "align: center" %></strong></li>
+        <li>Total posts: <b><%= user.posts.count%></b></li>
+      </div>
+    </div>
+    <% end %>
+  </ul>
+</div>
+   
+  

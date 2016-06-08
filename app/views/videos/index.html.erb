@@ -1,0 +1,16 @@
+<div class="row">
+  <% @videos.each do |video| %>
+  <div class="col col-md-4">
+    <h3><%= link_to video.title, video %></h3>
+   
+
+    <p><%=  %></p>
+    <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Edit', edit_video_path(video) %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </div>
+  <% end %>
+</div>
+<br>
+
+<%= link_to 'New Video', new_video_path %>

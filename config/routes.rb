@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :videos
+  resources :articles
   resources :news_pages
 
   get 'pages/articles'

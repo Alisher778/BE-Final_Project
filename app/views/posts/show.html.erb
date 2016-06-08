@@ -1,5 +1,10 @@
 <h4 align="center" id="title_h4">Title: <%= @post.title%> </h4>
 <div class="well well-lg">
+  <div align="center">
+  <p>Created by:</p>
+    <%= link_to image_tag(@post.user.photo.url(:thumb), class: 'round'), user_path(@post.user) %>
+    <h4><%= link_to @post.user.email, user_path(@post.user) %></h4>
+  </div>
   <p><%= @post.text%></p>
   <p>posted by<%=%> </p>
   <div class="article-actions" id="buttons">

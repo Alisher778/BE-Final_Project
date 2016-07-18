@@ -1,9 +1,15 @@
 <div class="row">
   <div class="col col-md-12">
-    <h2 align="center"><%= @video.title %></h2>
+    
     <div><%= @video.video.html_safe %></div>
   </div>
 </div>
+<iframe width="720" height="512"
+    src="<%= @video.title %>">
+  </iframe>
+
+  <source src="<%= @video.title %>"
+         type='video/mp4; codecs="avc1, mp4a"'>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>

@@ -7,23 +7,22 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
     @post = Post.new
   end
 
-  def edit
-  end
-
   def create
-    
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.create(post_params)
+    @post.user_id = current_user.id if current_user
+    @post.save
 
     if @post.save
       flash[:notice] = "Your post was successfully saved"
-      redirect_to posts_path(@post)
+      redirect_to topic_path(@topic)
     else
       flash.now[:error] = "Something went wrong"
       render :new
@@ -31,6 +30,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
 
     if @post.update(post_params)
       flash[:notice] = "Your post successfully updated"
@@ -41,7 +42,14 @@ class PostsController < ApplicationController
   end
   end
 
+   def edit
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
+  end
+
   def destroy
+    
+    @post = Topic.posts.find(params[:id])
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, error: 'Post was successfully destroyed.' }
@@ -57,6 +65,6 @@ class PostsController < ApplicationController
 
    
     def post_params
-      params.require(:post).permit(:title, :text, :user_id)
+      params.require(:post).permit(:title, :text, :user_id, :topic_id)
     end
 end

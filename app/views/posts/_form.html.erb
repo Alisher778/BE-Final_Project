@@ -1,6 +1,6 @@
-<%= render 'shared/errors', obj: @post %>
+<%= render 'shared/errors', obj: @topic %>
 
-<%= form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<%= form_for([@topic, Post.new], :html => {class: "form-horizontal"}) do |f| %>
 <div class="form-group">
   <%= f.label :title, class: "control-label col-md-2"%>
   <div class="col-md-8">

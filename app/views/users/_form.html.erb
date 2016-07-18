@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, html: { multipart: :true, class: 'form-horizontal' }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,32 +10,106 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+
+  <div class="container">
+  <div class="form-group">
+    <%= f.label :first_name, class: 'col-sm-3 control-label'  %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-user"></i>
+        </span>
+        <%= f.text_field :first_name, autofocus: true, class: 'form-control', placeholder: "First Name"   %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+
+  <div class="form-group">
+    <%= f.label :last_name, class: 'col-sm-3 control-label'  %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-user"></i>
+        </span>
+        <%= f.text_field :last_name, autofocus: true, class: 'form-control', placeholder: "Last Name"  %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'col-sm-3 control-label'  %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-envelope"></i>
+        </span>
+        <%= f.email_field :email, class: 'form-control', placeholder: "Email Address"   %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+
+  <div class="form-group">
+    <%= f.label :password, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-lock"></i>
+        </span>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Type minimum-8 characters'  %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-lock"></i>
+        </span>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Retype your password" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.radio_button :gender, 'Male' %><br />
-    <%= f.radio_button :gender, 'Femael' %>
+
+  <div class="form-group">
+    <%= f.label :date_of_birth, class: 'col-sm-3 control-label'  %>
+    <div class="col-sm-6">
+      <%= f.date_select :date_of_birth, start_year: 1950, end_year: 2000, class: 'form-control'  %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+  <div class="form-group">
+        <%= f.label :photo, class: 'col-sm-3 control-label'  %>
+        <div class="col-sm-6">
+            <%= f.file_field :photo %>
+        </div>
+    </div>
+
+   <div class="form-group">
+        <%= f.label :gender, "Gender", class: 'col-sm-3 control-label'  %>
+        <div class="col-sm-6">
+            <%= f.radio_button :gender, "female"  %> <%= f.label :gender, "Female" %>
+            <%= f.radio_button :gender, "male" %> <%= f.label :gender, "Male" %>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :bio, class: 'col-sm-3 control-label'%>
+        <div class="col col-sm-6">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </span>
+            <%= f.text_area :bio, placeholder: "Write brief information about yourself...", class: "form-control" %>
+          </div>
+        </div>
+    </div>
+
+  <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">
+            <%= f.submit "Sign Up", class: "btn btn-primary" %>
+        </div>
+    </div>
+  <% end %>
+</div>

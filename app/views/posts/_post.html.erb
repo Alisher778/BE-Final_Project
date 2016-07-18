@@ -1,0 +1,19 @@
+
+<div class="panel panel-info" id="post-panel">
+  
+  
+  <table>
+      <tr class="default">
+        <th id="user-info-posts" style="width: 30%"><%= image_tag post.user.photo.url(:small), class: "img-circle" %><small><%= link_to post.user.email, users_path(@user) %></small>
+        </th>
+        <th style="width: 60%; padding: 0 0 0 5px; margin: 0 0 0 2px">
+          <h4><%= post.title %></h4>
+        </th>
+      </tr>
+      <tr>
+        <th> 
+          <h5><%= post.text %></h5>
+        </th>
+      </tr>
+  </table>
+</div> 

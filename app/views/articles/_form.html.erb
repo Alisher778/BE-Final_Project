@@ -12,16 +12,18 @@
     </div>
   <% end %>
 
-  <div class="field" class="col col-md-6" >
+  <div class="form-group" >
     <%= f.label :title %><br>
-    <%= f.text_field :title%>
+    <%= f.text_field :title, class: "form-control"%>
   </div>
   <div class="field" >
     <%= f.label :contant %><br>
     <%= f.text_area :contant, :class => "tinymce", :rows => 40, :cols => 120 %>
   </div>
-  <div class="field">
-    <%= f.file_field :photo %>
+  <div class="form-group">
+    <div>
+    <img src="/assets/add.png"><%= f.file_field :photo, class: "form-control"%>
+    </div>
   </div>
   
 

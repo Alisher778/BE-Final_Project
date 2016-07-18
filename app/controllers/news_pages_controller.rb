@@ -1,6 +1,8 @@
 class NewsPagesController < ApplicationController
   before_action :set_news_page, only: [:show, :edit, :update, :destroy]
   
+  
+  
 
   # GET /news_pages
   # GET /news_pages.json

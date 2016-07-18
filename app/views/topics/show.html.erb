@@ -1,14 +1,47 @@
 <p id="notice"><%= notice %></p>
-
+<div class="topic-header">
+<table>
+  <tr>
+    <th style="width: 93%;"><h1 align="center"><%= link_to @topic.name, topics_path %></h1></th>
+    <th width="5%">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% if current_user %>
+          <li><%= link_to 'Edit', edit_topic_path(@topic)%></li>
+          <li><%= link_to 'Back', topics_path %></li>
+          <% end %>
+          <% if current_user.try(:admin?) %>
+          <li><%=  link_to "Delete", topic_path(@topic), method: :delete, data: {confirm: "Are you sure you want to delete it?"} %></li>
+          <% end %>
+        </ul>
+      </div>
+  </th>
+  </tr>
+</table>
+</div>
 <p>
-  <strong>Name:</strong>
-  <%= @topic.name %>
+  <strong>Created by:</strong>
+  <%= link_to @topic.user.email, user_path(@topic) %>
+  <b> Created at:</b>
+  <%= time_ago_in_words(@topic.created_at) %> ago
+   
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @topic.user %>
-</p>
+   
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Posts<span class="badge" style="margin-left: 2px; background-color: #f06292;"><%= @topic.posts.size %></span></h2>
+      <%=  render @topic.posts %>
+    </div>
+  </div>
+  
+  <h2> Add Posts:</h2>
+  <%= render "posts/form" %>
+<div>
+
+

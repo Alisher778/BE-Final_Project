@@ -2,17 +2,20 @@
   <% @news_pages.each do |news_page| %>
   <div class="col col-md-4">
    <a href="<% link_to news_page %>"><%= image_tag news_page.try(:image).url(:medium), class: "img-thumbnail" %>
-    <h3><%= link_to news_page.title, news_page %></h3>
+    <h4><%= link_to news_page.title.truncate_words(4), news_page %></h4>
     </a>
-
-    <p><%=  %></p>
-    <td><%= link_to 'Show', news_page %></td>
-        <td><%= link_to 'Edit', edit_news_page_path(news_page) %></td>
-        <td><%= link_to 'Destroy', news_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user.admin? %>
+    <td><%= link_to 'Show', news_page, class: 'btn btn-xs btn-success' %></td>
+        <td><%= link_to 'Edit', edit_news_page_path(news_page), class: 'btn btn-xs btn-info' %></td>
+        <td><%= link_to 'Destroy', news_page, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
+    <% end %>
   </div>
   <% end %>
 </div>
 <br>
-
-<%= link_to 'New News page', new_news_page_path %>
-<%= will_paginate @news_pages, renderer: BootstrapPagination::Rails %>
+<% if current_user.admin? %>
+  <%= link_to 'New page', new_news_page_path, class: 'btn btn-md btn-primary' %>
+<% end %>
+<div align="center">
+  <%= will_paginate @news_pages, renderer: BootstrapPagination::Rails %>
+</div>

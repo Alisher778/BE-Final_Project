@@ -58,5 +58,32 @@ footer li {
 #post-title{
   border-bottom: 1px solid #eaeaea;
 }
+.topic{
+  width: 85%;
+  background-color: #b2ebf2;
+}
+
+.topic-header{
+  border-bottom: 1px solid black;
+}
+.topic-header a{
+  color: red;
+}
+// This is Topic index page ------------------------------------
+#user-info{
+  background-color: #FFECB3;
+   
+}
+#user-info a, #user-info-posts a{
+  margin-left: 10px;
+}
+#post-panel{
+  padding: 1%;
+  margin: 2px auto 7px auto;
+}
+.default{
+  padding: 0;
+  margin: 0;
+}
 
 

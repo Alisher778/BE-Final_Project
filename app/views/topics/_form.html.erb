@@ -1,25 +1,27 @@
-<%= form_for(@topic) do |f| %>
+<%= form_for(@topic, :html => {class: "form-horizontal"}) do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
 
       <ul>
-      <% @topic.errors.full_messages.each do |message| %>
+      <% @topics.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="forum-group">
+     <%= f.label :name, class: "control-label col-md-1" %>
+   <div class="col-md-8"> 
+    <%= f.text_field :name, class: "form-control" %>
+   </div>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+
+  <div class="form-group">
+    <div class="col-sm-3 ">
+        <%= f.submit class: "btn btn-primary btn-md" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

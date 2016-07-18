@@ -1,18 +1,25 @@
+<% if current_user.admin? %>
+  <%= link_to 'New Article', new_article_path, class: 'btn btn-md btn-primary' %>
+<% end %><br><br>
 <div class="row">
   <% @articles.each do |article| %>
   <div class="col col-md-4">
    <a href="<% link_to article %>"><%= image_tag article.try(:photo).url(:medium), class: "img-thumbnail" %>
-    <h3><%= link_to article.title, article %></h3>
+    <h3><%= link_to article.title.truncate_words(4), article %></h3>
     </a>
 
-    <p><%=  %></p>
-    <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user.admin? %>
+    <td><%= link_to 'Show', article, class: "btn btn-xs btn-success" %>
+        <%= link_to 'Edit', article_path(article), class: "btn btn-xs btn-warning" %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn btn-danger btn-xs" %></td>
+    <% end %>
   </div>
   <% end %>
 </div>
 <br>
-
-<%= link_to 'New News page', new_article_path %>
-<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+<% if current_user.admin? %>
+  <%= link_to 'New Article', new_article_path, class: 'btn btn-md btn-primary' %>
+<% end %>
+<div align="center">
+  <%= will_paginate @articles, renderer: BootstrapPagination::Rails%>
+</div>

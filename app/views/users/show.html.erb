@@ -1,33 +1,40 @@
-<h2 align="center">Welcome <%= @user.first_name %>! This is your Profile page</h2>
-  <div align="center">
-    <%= image_tag @user.photo.url(:medium), class: 'img-circle'%>
+<h2 align="center">Welcome <%= @user.first_name %>!</h2>
+  <div class="row"><br>
+  <div class="col col-md-4">
+    <div class="well">
+      <%= image_tag @user.photo.url(:medium), class: 'img-circle'%><br><br>
+      <p align="center">Number of my posts: <%= link_to @user.posts.count, topic_posts_path(@user)  %></p>
+    </div>
   </div>
-  
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-<p>Number of my posts: <%= link_to @user.posts.count  %></p>
-
-<%= render 'posts', obj: @user.posts %>
+  <div class="col col-md-6">
+  <div class="well well-">
+   <table class="table table-striped">
+     <tr>
+       <th>First name</th>
+       <td><%= @user.first_name %></td>
+     </tr>
+     <tr>
+       <th>Last name</th>
+       <td><%= @user.last_name %></td>
+     </tr>
+     <tr>
+       <th>Birthday</th>
+       <td><%= @user.date_of_birth.strftime("%m/%d/%Y") %></td>
+     </tr>
+     <tr>
+       <th>Email</th>
+       <td><%= @user.email %></td>
+     </tr>
+     <tr>
+       <th>Gender</th>
+       <td><%= @user.gender %></td>
+     </tr>
+     <tr>
+       <th>Brief Information</th>
+       <td><%= @user.try(:bio) %></td>
+     </tr>
+   </table>
+</div>
+</div>
+</div>
 

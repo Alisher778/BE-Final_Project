@@ -4,7 +4,7 @@
     <ul class="listing">
       <li>
       <%= link_to image_tag(post.user.photo.url(:small), class: 'round'), user_path(post.user) %> <small><%= link_to post.user.email %></small>
-        <li align="center " id="post-title"><strong><%= link_to post.title, post_path(post)%></strong></li>
+        <li align="center " id="post-title"><strong><%= link_to post.title, topic_posts_path(post)%></strong></li>
       </li>
     </ul>
     <p align="justify"><%= post.text %></p>
@@ -16,16 +16,13 @@
     </div>
       <% if current_user %>
         <div class="article-actions" id="buttons">
-          <%= link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary" %>
-          <%=  link_to "Delete", post_path(post), method: :delete, data: {confirm: "Are 
+          <%= link_to "Edit", class: "btn btn-xs btn-primary" %>
+          <%=  link_to "Delete", method: :delete, data: {confirm: "Are 
             you sure you want to delete it?"}, class: "btn btn-xs btn-danger" %>
         </div>
       <% end %>
   </div>
 </div>
 <% end %>
-
-
-<%= link_to 'New Post', new_post_path, class: "btn btn-lg btn-success" %><br>
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 

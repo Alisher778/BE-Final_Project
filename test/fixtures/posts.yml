@@ -3,7 +3,11 @@
 one:
   title: MyString
   text: MyText
+  user_id: 
+  topic_id: 
 
 two:
   title: MyString
   text: MyText
+  user_id: 
+  topic_id: 

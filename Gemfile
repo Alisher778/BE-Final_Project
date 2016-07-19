@@ -14,7 +14,6 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'devise'
 gem 'paperclip'
 gem 'tinymce-rails'
-gem 'rails_admin'
 gem 'aws-sdk', '~> 2.3'
 
 
@@ -32,8 +31,7 @@ group :development do
 end
 
 group :production do
-  gem 'rails_12factor'
-  gem 'pg'
+ 
 end
 
 ruby '2.2.3'

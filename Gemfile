@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0'
@@ -31,8 +32,10 @@ group :development do
   gem 'sqlite3'
 end
 
-gem 'rails_12factor', group: :production
-gem 'pg', group: :production
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor'
+end
 
-ruby '2.2.3'
+
 
